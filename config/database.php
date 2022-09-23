@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mongodb'),
 
     /*
     |--------------------------------------------------------------------------
@@ -35,6 +35,11 @@ return [
 
     'connections' => [
 
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'dsn' => env('DB_URI', 'mongodb+srv://diepmac:khanh123456@diepmac.wnzbrd0.mongodb.net/chat?retryWrites=true&w=majority'),
+            'database' => 'chat',
+        ],
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
@@ -121,7 +126,8 @@ return [
 
     'redis' => [
 
-        'client' => env('REDIS_CLIENT', 'phpredis'),
+        'client' => env('REDIS_CLIENT', 'predis'),
+
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
@@ -129,7 +135,7 @@ return [
         ],
 
         'default' => [
-            'url' => env('REDIS_URL'),
+            // 'url' => env('REDIS_URL'),
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'username' => env('REDIS_USERNAME'),
             'password' => env('REDIS_PASSWORD'),
@@ -138,7 +144,7 @@ return [
         ],
 
         'cache' => [
-            'url' => env('REDIS_URL'),
+            // 'url' => env('REDIS_URL'),
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'username' => env('REDIS_USERNAME'),
             'password' => env('REDIS_PASSWORD'),
