@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mongodb'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -35,11 +35,6 @@ return [
 
     'connections' => [
 
-        'mongodb' => [
-            'driver' => 'mongodb',
-            'dsn' => env('DB_URI', 'mongodb+srv://diepmac:khanh123456@diepmac.wnzbrd0.mongodb.net/chat?retryWrites=true&w=majority'),
-            'database' => 'chat',
-        ],
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
