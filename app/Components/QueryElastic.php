@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Components;
 
 
@@ -19,7 +20,8 @@ namespace App\Components;
 // should: Các kết quả thỏa mãn MỘT TRONG các câu query
 
 
-class QueryElastic {
+class QueryElastic
+{
     public static  $param = [
         'body' => [
             'size' => 10,
@@ -61,8 +63,15 @@ class QueryElastic {
                     //     ]]
                     // ]
 
+                ]
 
-                ],
+            ],
+            "sort" =>  [
+                [
+                    "id" => [
+                        "order" => "asc"
+                    ]
+                ]
 
             ]
         ]
