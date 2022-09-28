@@ -20,20 +20,18 @@ class RedisProductRepository implements ProductRepository
     public function getAll(): Collection
     {
         $rawProducts = json_decode(Redis::get('product.all'));
-
         if (!is_null($rawProducts)) {
             $products = collect(
                 array_map(function ($rawProduct) {
                     $product = new Product;
                     $product->id = $rawProduct->id;
-                    $product->name = $rawProduct->name;
-
+                    $product->username = $rawProduct->username;
                     return $product;
                 }, $rawProducts)
             );
-
             return $products;
         }
+
 
         $products = $this->updateProductList();
 
@@ -47,7 +45,7 @@ class RedisProductRepository implements ProductRepository
         if (!is_null($rawProduct)) {
             $product = new Product;
             $product->id = $rawProduct->id;
-            $product->name = $rawProduct->name;
+            $product->username = $rawProduct->username;
 
             return $product;
         }
@@ -88,7 +86,6 @@ class RedisProductRepository implements ProductRepository
     private function updateProductList(): Collection
     {
         $products = $this->nestedRepository->getAll();
-
         Redis::del('product.all');
         Redis::set('product.all', json_encode($products));
         Redis::expire('product.all', self::CACHE_TTL);

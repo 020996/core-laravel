@@ -11,7 +11,7 @@ class BaseController extends Controller
 
     public function __construct()
     {
-        $this->middleware('Api.auth', ['except' => ['login',]]);
+        $this->middleware('Api.auth', ['except' => ['login','getHome', 'getSearch']]);
         try {
             $token = \request()->header('authorization');
         } catch (\Exception $e) { //general JWT exception

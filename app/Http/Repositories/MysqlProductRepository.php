@@ -20,14 +20,12 @@ class MysqlProductRepository implements ProductRepository
     public function save(Product $product): Product
     {
         $existingProduct = Product::find($product->id);
-
         if (is_null($existingProduct)) {
             $product->save();
         } else {
-            $existingProduct->name = $product->name;
+            $existingProduct->username = $product->username;
             $existingProduct->save();
         }
-
         return $product;
     }
 

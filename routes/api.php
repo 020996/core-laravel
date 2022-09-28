@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1') ->group(function(){
     Route::prefix('home')->group(function () {
         Route::get('/', 'Api\V1\HomeController@getHome');
+        Route::get('search', 'Api\V1\HomeController@getSearch');
+
     });
 
 });
